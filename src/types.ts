@@ -33,12 +33,11 @@ export type DefaultThunk<T, C = any> = T | ((options?: ResolveOptions<C>) => T);
 
 export type InferType<T extends ISchema<any, any>> = T['__outputType'];
 
-export type TransformFunction<T extends AnySchema, C = any> = (
+export type TransformFunction<T extends AnySchema> = (
   this: T,
   value: any,
   originalValue: any,
   schema: T,
-  options: CastOptions<C>,
 ) => any;
 
 export interface Ancester<TContext> {

@@ -44,10 +44,10 @@ export default class DateSchema<
     });
 
     this.withMutation(() => {
-      this.transform((value, _raw) => {
+      this.transform((value, _raw, ctx) => {
         // null -> InvalidDate isn't useful; treat all nulls as null and let it fail on
         // nullability check vs TypeErrors
-        if (!this.spec.coerce || this.isType(value) || value === null)
+        if (!ctx.spec.coerce || ctx.isType(value) || value === null)
           return value;
 
         value = parseIsoDate(value);
