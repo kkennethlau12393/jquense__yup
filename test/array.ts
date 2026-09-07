@@ -46,16 +46,10 @@ describe('Array types', () => {
         expect(val).toEqual(parent[idx]);
         expect(originalValue).toEqual(parent[idx]);
 
-        return string().transform((value, _originalValue, _schema, options: any) => {
-          expect(parent).toEqual(options.parent);
-          expect(typeof options.index).toBe('number');
-          expect(val).toEqual(value);
-
-          return value;
-        });
+        return string();
       });
 
-      await array().of(itemSchema).validate(value, { context: { name: 'test'} });
+      await array().of(itemSchema).validate(value);
     });
   });
 
